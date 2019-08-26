@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/antCard"
     android:layout_width="match_parent"
     android:layout_height="200dp"
@@ -34,15 +35,15 @@
                 android:id="@+id/antName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ant Name"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:text="Ant Name" />
 
             <TextView
                 android:id="@+id/antLatinName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ant Latin Name"
-                android:textStyle="italic" />
+                android:textStyle="italic"
+                tools:text="Ant Latin Name" />
 
         </LinearLayout>
 
