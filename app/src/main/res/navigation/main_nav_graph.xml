@@ -18,5 +18,9 @@
         android:id="@+id/detailFragment"
         android:name="com.islam.antsiclopedia.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="Ant"
+            app:argType="com.islam.antsiclopedia.entity.Ant" />
+    </fragment>
 </navigation>
