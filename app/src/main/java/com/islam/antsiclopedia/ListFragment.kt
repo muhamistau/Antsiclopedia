@@ -3,10 +3,8 @@ package com.islam.antsiclopedia
 
 import android.content.Context
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -28,6 +26,7 @@ class ListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (activity as AppCompatActivity).setSupportActionBar(toolbar)
+        setHasOptionsMenu(true)
         ants = ArrayList()
         populateList()
 
@@ -39,6 +38,23 @@ class ListFragment : Fragment() {
 
         antRecyclerView.adapter = antListAdapter
         antRecyclerView.layoutManager = LinearLayoutManager(activity)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.main_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+        if (id == R.id.action_about) {
+            val directions = ListFragmentDirections
+                .actionListFragmentToAboutFragment()
+            findNavController().navigate(directions)
+            return true
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     private fun populateList() {
