@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_detail.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
 import com.islam.antsiclopedia.entity.Ant
 import kotlinx.android.synthetic.main.content.*
@@ -28,6 +30,7 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (activity as AppCompatActivity).setSupportActionBar(toolbar)
+        toolbar.setupWithNavController(findNavController())
         ant = DetailFragmentArgs.fromBundle(arguments!!).Ant
 
         toolbar.title = ant.name
