@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.islam.antsiclopedia.entity.Ant
@@ -26,11 +27,14 @@ class ListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as AppCompatActivity).setSupportActionBar(toolbar)
         ants = ArrayList()
         populateList()
 
         val antListAdapter = AntListAdapter(activity as Context, ants) {
-            findNavController().navigate(R.id.detailFragment)
+            val directions = ListFragmentDirections
+                .actionListFragmentToDetailFragment(it)
+            findNavController().navigate(directions)
         }
 
         antRecyclerView.adapter = antListAdapter
